@@ -35,3 +35,17 @@ const tooltipTriggerElements = document.querySelectorAll('[data-bs-toggle="toolt
 tooltipTriggerElements.forEach((tooltipTriggerElement) => {
   new bootstrap.Tooltip(tooltipTriggerElement);
 });
+// 文字数カウント表示
+document.addEventListener('DOMContentLoaded', function() {
+  const input = document.querySelector('textarea[name="content"]');
+  const counter = document.createElement('div');
+  counter.style.textAlign = 'right';
+  counter.style.fontSize = '12px';
+  counter.style.color = '#888';
+  counter.textContent = '0文字';
+  input.insertAdjacentElement('afterend', counter);
+  
+  input.addEventListener('input', function() {
+    counter.textContent = input.value.length + '文字';
+  });
+});
